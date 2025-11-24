@@ -78,6 +78,55 @@
     /* small helpers */
     .muted{color:var(--muted)}
     .center{display:flex; align-items:center; justify-content:center}
+	.member-card {
+  display: flex;
+  gap: 16px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 8px 28px rgba(2,6,23,0.06);
+  margin-bottom: 18px;
+  border-left: 4px solid var(--accent);
+  animation: fadeIn 0.4s ease;
+}
+
+.mc-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  background: var(--glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.mc-content h3 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mc-role {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.mc-about {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #0b1220;
+}
+
+/* animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(6px);}
+  to {opacity: 1; transform: translateY(0);}
+
   </style>
 </head>
 <body>
@@ -140,11 +189,11 @@
   <script>
     // Dữ liệu thành viên: ĐÃ THÊM trường 'profile'
     const members = [
-      {name: 'Nguyễn Huỳnh Đăng Thư', cls: '12 Văn', profile: 'https://www.facebook.com/share/17UJbNnyT4/'}, // THAY '#' bằng link profile cá nhân
-      {name: 'Trần Lê Yến Như', cls: '12 Văn', profile: '#'},
-      {name: 'Nguyễn Phạm Quế Anh', cls: '12 Văn', profile: '#'},
-      {name: 'Nguyễn Huỳnh Ngọc Châu', cls: '12 Văn', profile: '#'},
-      {name: 'Đỗ Quốc Việt', cls: '12 Văn', profile: '#'}
+      {name: 'Nguyễn Huỳnh Đăng Thư', cls: '12 Văn', profile: 'https://www.facebook.com/share/17UJbNnyT4/'}, about: 'phụ trách nội dung', photo: 'https://share.google/images/WMtGCwDR1vlcpBuaF'},// THAY '#' bằng link profile cá nhân
+      {name: 'Trần Lê Yến Như', cls: '12 Văn', profile: 'https://web.facebook.com/share/17MnNDwpWB/?mibextid=wwXIfr&_rdc=1&_rdr', about: 'phụ trách tạo wed nhóm', photo: 'https://share.google/images/dnAulIwgzeZEIzEeo'},
+      {name: 'Nguyễn Phạm Quế Anh', cls: '12 Văn', profile: 'https://web.facebook.com/share/1PPNyeuwVi/?mibextid=wwXIfr&_rdc=1&_rdr'}, about: 'thành viên nhóm ohuj trsch nội dung và tạo wed', photo: 'https://share.google/images/bdfgSXDlMXgAoFpSW'},
+      {name: 'Nguyễn Huỳnh Ngọc Châu', cls: '12 Văn', profile: 'https://web.facebook.com/share/1GweRAs5nB/?mibextid=wwXIfr&_rdc=1&_rdr'}, about: ' phụ trách nội dung', photo: 'https://share.google/images/M9S6gw8PQi5ztoIqd'},
+      {name: 'Đỗ Quốc Việt', cls: '12 Văn', profile: 'https://web.facebook.com/share/17Yc8yKDEB/?mibextid=wwXIfr&_rdc=1&_rdr', about: 'phụ trách nội dung' photo: 'https://share.google/images/E8YAhbKXWlCCWqNvG'},
     ];
 
     const links = [
@@ -167,18 +216,27 @@
 
     const membersEl = document.getElementById('members');
     members.forEach(m =>{
-      const div = document.createElement('div'); div.className='member'; 
-      
-      // LOGIC MỚI: Tạo thẻ <a> bao bọc thông tin thành viên
-      const a = document.createElement('a'); a.className='member-link'; a.href = m.profile; a.target = '_blank';
+      const card = document.createElement('div');
+  card.className = 'member-card';
 
-      const avatar = document.createElement('div'); avatar.className='avatar'; avatar.textContent = initials(m.name);
-      const meta = document.createElement('div'); meta.className='meta';
-      meta.innerHTML = `<div class="name">${m.name}</div><div class="class">${m.cls}</div>`;
-      
-      a.appendChild(avatar); a.appendChild(meta); // Chèn Avatar và Meta vào thẻ <a>
-      div.appendChild(a); // Chèn thẻ <a> vào thẻ div.member
-      membersEl.appendChild(div);
+  // Avatar or photo
+  let avatarHTML = '';
+  if (m.photo) {
+    avatarHTML = `<img class="mc-avatar-img" src="${m.photo}" alt="${m.name}">`;
+  } else {
+    avatarHTML = `<div class="mc-avatar">${initials(m.name)}</div>`;
+  }
+
+  card.innerHTML = `
+    ${avatarHTML}
+    <div class="mc-content">
+      <h3>${m.name}</h3>
+      <p class="mc-role">Lớp ${m.cls}</p>
+      <p class="mc-about">${m.about || ''}</p>
+    </div>
+  `;
+
+  membersEl.appendChild(card);
     });
 
     const linksEl = document.getElementById('links');
@@ -206,4 +264,5 @@
     }
   </script>
 </body>
+
 </html>

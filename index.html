@@ -167,27 +167,18 @@
 
     const membersEl = document.getElementById('members');
     members.forEach(m =>{
-      const card = document.createElement('div');
-  card.className = 'member-card';
+      const  div = document.createElement('div'); div.className='member'; 
+      
+      // LOGIC MỚI: Tạo thẻ <a> bao bọc thông tin thành viên
+      const a = document.createElement('a'); a.className='member-link'; a.href = m.profile; a.target = '_blank';
 
-  // Avatar or photo
-  let avatarHTML = '';
-  if (m.photo) {
-    avatarHTML = `<img class="mc-avatar-img" src="${m.photo}" alt="${m.name}">`;
-  } else {
-    avatarHTML = `<div class="mc-avatar">${initials(m.name)}</div>`;
-  }
-
-  card.innerHTML = `
-    ${avatarHTML}
-    <div class="mc-content">
-      <h3>${m.name}</h3>
-      <p class="mc-role">Lớp ${m.cls}</p>
-      <p class="mc-about">${m.about || ''}</p>
-    </div>
-  `;
-
-  membersEl.appendChild(card);
+      const avatar = document.createElement('div'); avatar.className='avatar'; avatar.textContent = initials(m.name);
+      const meta = document.createElement('div'); meta.className='meta';
+      meta.innerHTML = `<div class="name">${m.name}</div><div class="class">${m.cls}</div>`;
+      
+      a.appendChild(avatar); a.appendChild(meta); // Chèn Avatar và Meta vào thẻ <a>
+      div.appendChild(a); // Chèn thẻ <a> vào thẻ div.member
+      membersEl.appendChild(div);
     });
 
     const linksEl = document.getElementById('links');
@@ -217,5 +208,6 @@
 </body>
 
 </html>
+
 
 

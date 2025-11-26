@@ -2,214 +2,112 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GROUP 4</title> <meta name="description" content="Trang thông tin nhóm 4 - danh sách thành viên và bài tập" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giới thiệu - [Tên của bạn]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f5f8ff; --card:#ffffff; --accent:#60a5fa; --muted:#475569; --glass: rgba(2,6,23,0.04);
-      --radius:14px; --maxw:980px;
+      --bg-image: url('/mnt/data/b352d03d23df3afe9be7d9e0caf1dc11.jpg');
+      --accent: #4f46e5;
+      --glass: rgba(255,255,255,0.08);
     }
     *{box-sizing:border-box}
-    body{
-      margin:0; font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg,#f5f8ff 0%, #e6eefb 100%); color:#0b1220; -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale; padding:40px 16px; display:flex; justify-content:center;
-    }
-    .wrap{width:100%; max-width:var(--maxw)}
-    header{display:flex; align-items:center; gap:16px; margin-bottom:22px}
-    .logo{
-      width:86px; height:86px; border-radius:18px; background:linear-gradient(135deg,var(--accent),#7dd3fc);
-      display:flex; align-items:center; justify-content:center; font-weight:700; color:#04202a; font-size:18px; box-shadow:0 6px 20px rgba(96,165,250,0.12);
-    }
-    h1{margin:0; font-size:26px; letter-spacing:0.6px}
-    p.lead{margin:4px 0 0; color:var(--muted)}
-
-    .grid{display:grid; grid-template-columns: 1fr 360px; gap:20px}
-    @media (max-width:880px){ .grid{grid-template-columns:1fr} .sidebar{order:-1} }
-
-    .card{background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.9)); padding:18px; border-radius:var(--radius); box-shadow:0 8px 28px rgba(2,6,23,0.06);}
-    .section-title{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px}
-    .section-title h2{margin:0; font-size:16px}
-
-    .members{display:flex; flex-direction:column; gap:10px}
-    
-    /* CSS MỚI: Tạo hiệu ứng cao cấp/link cho từng thành viên */
-    .member {
-        display: block; /* Điều chỉnh để bao bọc link */
-    }
-    .member a.member-link {
-        display: flex; /* Giữ layout ngang */
-        gap: 12px;
-        align-items: center;
-        text-decoration: none;
-        color: inherit;
-        padding: 6px 8px; /* Tăng diện tích nhấp */
-        margin: -6px -8px; /* Mở rộng vùng hover */
-        border-radius: 12px;
-        transition: background-color 0.2s ease-in-out;
-    }
-    .member a.member-link:hover {
-        background: var(--glass); /* Hiệu ứng hover tinh tế */
-    }
-    /* END CSS MỚI */
-    
-    .avatar{width:56px; height:56px; border-radius:10px; background:var(--glass); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent)}
-    .member .meta{line-height:1}
-    .member .meta .name{font-weight:600}
-    .member .meta .class{color:var(--muted); font-size:13px}
-
-    .list-links{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px}
-    .link-btn{display:flex; align-items:center; gap:10px; padding:10px 12px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:10px; text-decoration:none; color:inherit; border:1px solid rgba(255,255,255,0.03)}
-    .link-btn small{color:var(--muted)}
-
-    .sidebar .card + .card{margin-top:14px}
-
-    form .row{display:flex; gap:8px; margin-bottom:10px}
-    form input[type=text], form input[type=email], form textarea, form select{
-      width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit; outline:none
-    }
-    form textarea{min-height:86px; resize:vertical}
-    button.primary{background:linear-gradient(90deg,var(--accent),#60a5fa); color:#04202a; border:none; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer}
-    .footer-note{color:var(--muted); font-size:13px; margin-top:12px}
-
-    .external{display:flex; gap:8px; align-items:center}
-    .badge{font-size:12px; padding:6px 8px; background:rgba(255,255,255,0.02); border-radius:8px; color:var(--muted)}
-
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .center{display:flex; align-items:center; justify-content:center}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background-image:var(--bg-image);background-size:cover;background-position:center;height:100vh;color:#fff;display:flex;align-items:center;justify-content:center}
+    /* overlay */
+    .overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.65));backdrop-filter:blur(2px)}
+    .container{position:relative;z-index:2;max-width:960px;width:90%;display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));border-radius:16px;padding:22px;box-shadow:0 8px 30px rgba(2,6,23,0.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.06)}
+    .profile{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .avatar{width:160px;height:160px;border-radius:50%;overflow:hidden;border:4px solid rgba(255,255,255,0.12);box-shadow:0 6px 18px rgba(0,0,0,0.5);}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    h1{margin:14px 0 4px;font-size:26px;letter-spacing:0.2px}
+    p.role{margin:0;font-weight:600;opacity:0.9}
+    .info{padding:10px 6px;margin-top:16px}
+    .info-item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px dashed rgba(255,255,255,0.04)}
+    .info-item:first-of-type{border-top:0}
+    .label{min-width:82px;font-weight:600;color:var(--accent)}
+    .value{flex:1}
+    .bio{margin-top:12px;line-height:1.5;color:rgba(255,255,255,0.92)}
+    .actions{margin-top:16px;display:flex;gap:10px;justify-content:center}
+    .btn{padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(79,70,229,0.2)}
+    /* responsive */
+    @media (max-width:720px){.container{grid-template-columns:1fr;gap:12px}.profile{flex-direction:row;align-items:center;text-align:left}.avatar{width:96px;height:96px}.info{padding-left:6px}}
+    /* small note */
+    .note{font-size:13px;opacity:0.85;margin-top:8px;text-align:center}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">G4</div>
-      <div>
-        <h1>GROUP 4</h1>
-        <p class="lead">Nhóm 4</p>
+  <div class="overlay"></div>
+  <div class="container">
+    <!-- Profile card left -->
+    <aside class="card profile">
+      <div class="avatar">
+        <!-- Thay URL ảnh ở đây -->
+        <img src="https://thichtrangtri.com/wp-content/uploads/2025/05/anh-phong-canh-chill-7.jpg" alt="Ảnh đại diện">
       </div>
-    </header>
+      <h1 id="fullName">Nguyễn Phạm Quế Anh</h1>
+      <p class="role" id="className">Lớp 12 Văn</p>
+      <div class="actions">
+        <a class="btn" href="#contact">Liên hệ</a>
+        <a class="btn" href="#more" style="background:transparent;border:1px solid rgba(255,255,255,0.12)">Xem thêm</a>
+      </div>
+      <p class="note">Bạn có thể sửa tên, lớp, hoặc ảnh trong mã HTML.</p>
+    </aside>
 
-    <main class="grid">
-      <section>
-        <div class="card">
-          <div class="section-title">
-            <h2>Thành viên</h2>
-            <div class="badge">Lớp 12 Văn - Nhóm 4</div>
-          </div>
-
-          <div class="members" id="members">
-            </div>
-
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <div class="section-title"><h2>VẬN DỤNG</h2><span class="muted">Bài tập & tài liệu</span></div>
-          <div class="list-links" id="links">
-            </div>
-
-          <p class="footer-note">Một số bài dẫn tới trang Canva (thiết kế). Nhấn vào từng ô để mở.</p>
+    <!-- Main info right -->
+    <main class="card">
+      <section id="about">
+        <h2 style="margin:0 0 8px">Thông tin cá nhân</h2>
+        <div class="bio">Xin chào! Mình là <strong id="nameInText">Nguyễn Phạm Quế Anh</strong>. Mình đang học tại lớp <strong id="classInText">12A4</strong>. Dưới đây là một vài thông tin cơ bản về mình — bạn hãy thay thế nội dung mẫu bằng thông tin thật của bạn.</div>
+        <div class="info">
+          <div class="info-item"><div class="label">Họ & tên</div><div class="value" id="info-name">Nguyễn Phạm Quế Anh</div></div>
+          <div class="info-item"><div class="label">Lớp</div><div class="value" id="info-class">12 Văn </div></div>
+          <div class="info-item"><div class="label">Ngày sinh</div><div class="value" id="info-dob">11/01/2008</div></div>
+          <div class="info-item"><div class="label">Sở thích</div><div class="value" id="info-hobbies">Đọc sách, viết văn, xem phim, nghe nhạc</div></div>
+          <div class="info-item"><div class="label">Email</div><div class="value" id="info-email">queanh11012008@gmail.com</div></div>
+          <div class="info-item"><div class="label">SĐT</div><div class="value" id="info-phone">0909704339</div></div>
         </div>
       </section>
 
-      <aside class="sidebar">
-        <div class="card">
-          <div class="section-title"><h2>Form gửi ý kiến</h2><span class="muted">Gửi nhanh</span></div>
-          <form id="contactForm" onsubmit="return handleSubmit(event)">
-            <div class="row"><input type="text" id="name" placeholder="Họ & tên" required></div>
-            <div class="row"><input type="email" id="email" placeholder="Email (không bắt buộc)"></div>
-            <div class="row"><select id="topic"><option value="phanhoi">Phản hồi</option><option value="nopbai">Nộp bài</option><option value="yeucau">Yêu cầu</option></select></div>
-            <div class="row"><textarea id="message" placeholder="Nội dung" required></textarea></div>
-            <div class="row"><button class="primary" type="submit">Submit</button></div>
-          </form>
-          <p class="muted" style="font-size:13px;margin-top:8px">Dữ liệu demo — form chỉ xử lý cục bộ (không gửi server). Bạn có thể thay bằng Google Forms hoặc tích hợp Firebase.</p>
-        </div>
+      <section id="more" style="margin-top:16px">
+        <h3 style="margin:0 0 8px">Giới thiệu ngắn</h3>
+        <p> Điểm mạnh: năng động, biết lăng nghe, chăm chỉ.
+		Điểm yếu: trầm lắng, đôi khi chưa phát huy tốt điểm mạnh.</p>
+      </section>
 
-        <div class="card" style="margin-top:14px">
-          <h2 style="margin:0 0 8px 0">Liên kết nhanh</h2>
-          <div class="external">
-            <a class="link-btn" href="#" onclick="alert('Bạn có thể thay link tới GitHub, Canva, Google Drive...')">Cài đặt</a>
-            <a class="link-btn" href="#">Hướng dẫn</a>
-          </div>
-        </div>
-      </aside>
+      <section id="contact" style="margin-top:14px">
+        <h3 style="margin:0 0 8px">Liên hệ</h3>
+        <p>.</p>
+      </section>
     </main>
+  </div>
 
-    <footer style="margin-top:22px; text-align:center" class="muted">© GROUP 4 • Thiết kế mẫu — sửa và dùng cho môn học</footer> </div>
-
+  <!-- JS nhỏ để thay thế nhanh (không bắt buộc) -->
   <script>
-    // Dữ liệu thành viên: ĐÃ THÊM trường 'profile'
-    const members = [
-      {name: 'Nguyễn Huỳnh Đăng Thư', cls: '12 Văn', profile: 'https://www.facebook.com/share/17UJbNnyT4/', about: 'phụ trách nội dung', photo: 'https://share.google/images/WMtGCwDR1vlcpBuaF'},// THAY '#' bằng link profile cá nhân
-      {name: 'Trần Lê Yến Như', cls: '12 Văn', profile: 'https://web.facebook.com/share/17MnNDwpWB/?mibextid=wwXIfr&_rdc=1&_rdr', about: 'phụ trách tạo wed nhóm', photo: 'https://share.google/images/dnAulIwgzeZEIzEeo'},
-      {name: 'Nguyễn Phạm Quế Anh', cls: '12 Văn', profile: 'https://web.facebook.com/share/1PPNyeuwVi/?mibextid=wwXIfr&_rdc=1&_rdr', about: 'thành viên nhóm ohuj trsch nội dung và tạo wed', photo: 'https://share.google/images/bdfgSXDlMXgAoFpSW'},
-      {name: 'Nguyễn Huỳnh Ngọc Châu', cls: '12 Văn', profile: 'https://web.facebook.com/share/1GweRAs5nB/?mibextid=wwXIfr&_rdc=1&_rdr', about: ' phụ trách nội dung', photo: 'https://share.google/images/M9S6gw8PQi5ztoIqd'},
-      {name: 'Đỗ Quốc Việt', cls: '12 Văn', profile: 'https://web.facebook.com/share/17Yc8yKDEB/?mibextid=wwXIfr&_rdc=1&_rdr', about: 'phụ trách nội dung', photo: 'https://share.google/images/E8YAhbKXWlCCWqNvG'},
-    ];
-
-    const links = [
-      {title:'Bài 7', href:'https://docs.google.com/document/d/1m_pAeJTqHiUTKwysgXKJ3bCzX8lwi2Yv1XZQs52rP88/edit?usp=drivesdk'},
-      {title:'Bài 8', href:'https://docs.google.com/document/d/1MrnnoU4JN_IzSy4xH1nbMDgYQD1JE3fLebK19yrAiR8/edit?usp=drivesdk'},
-      {title:'Bài 9', href:'#'}, 
-	  {title:'Bài 10', href:'#'},
-	   {title:'Bài 12', href:'#'}, 
-	   {title:'Bài 13', href:'#'}, 
-	   {title:'Bài 14', href:'#'},
-      {title:'Bài 15', href:'#'}, 
-	  {title:'Bài 16', href:'#'}, 
-	  {title:'Bài 17', href:'#'}, 
-	  {title:'Bài 18', href:'#'},
-      {title:'Bài 19', href:'#'}, 
-	  {title:'Bài 20', href:'#'}, 
-	  {title:'Bài 21', href:'#'}, 
-	  {title:'Bài 22', href:'#'}
-    ];
-
-    const membersEl = document.getElementById('members');
-    members.forEach(m =>{
-      const  div = document.createElement('div'); div.className='member'; 
-      
-      // LOGIC MỚI: Tạo thẻ <a> bao bọc thông tin thành viên
-      const a = document.createElement('a'); a.className='member-link'; a.href = m.profile; a.target = '_blank';
-
-      const avatar = document.createElement('div'); avatar.className='avatar'; avatar.textContent = initials(m.name);
-      const meta = document.createElement('div'); meta.className='meta';
-      meta.innerHTML = `<div class="name">${m.name}</div><div class="class">${m.cls}</div>`;
-      
-      a.appendChild(avatar); a.appendChild(meta); // Chèn Avatar và Meta vào thẻ <a>
-      div.appendChild(a); // Chèn thẻ <a> vào thẻ div.member
-      membersEl.appendChild(div);
-    });
-
-    const linksEl = document.getElementById('links');
-    links.forEach(l =>{
-      const a = document.createElement('a'); a.className='link-btn'; a.href = l.href; a.target='_blank';
-      a.innerHTML = `<div style=\"width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;font-weight:700\">${l.title.split(' ')[1]||l.title}</div><div><div style=\"font-weight:600\">${l.title}</div><small class=\"muted\">Mở liên kết</small></div>`;
-      linksEl.appendChild(a);
-    });
-
-    function initials(full){
-      return full.split(' ').slice(-2).map(s=>s[0]).join('').toUpperCase();
+    // Nếu muốn tự động thay nội dung, sửa các biến dưới đây
+    const profile = {
+      name: 'Nguyễn Phạm Quế Anh',
+      class: '12 Văn',
+      dob: '11/01/2008',
+      hobbies: 'Đọc sách, xem phim',
+      email: 'queanh11012008@gmail.com',
+      phone: '0909704339 ',
+      avatar: 'https://drive.google.com/file/d/1drVcvG1MAeDw89BaWJBg63Bwbdy8DAYO/view?usp=drive_link',
+      background: 'https://thichtrangtri.com/wp-content/uploads/2025/05/anh-phong-canh-chill-7.jpg' // để trống sẽ dùng mặc định
     }
-
-    function handleSubmit(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const topic = document.getElementById('topic').value;
-      const message = document.getElementById('message').value.trim();
-      if(!name||!message){ alert('Vui lòng điền tên và nội dung.'); return false }
-      // demo: show summary
-      alert(`Cám ơn ${name}!\nChủ đề: ${topic}\nEmail: ${email||'(không có)'}\nNội dung: ${message.substring(0,120)}${message.length>120?'...':''}`);
-      document.getElementById('contactForm').reset();
-      return false;
-    }
+    // Áp dụng nhanh
+    document.getElementById('fullName').textContent = profile.name;
+    document.getElementById('className').textContent = 'Lớp ' + profile.class;
+    document.getElementById('nameInText').textContent = profile.name;
+    document.getElementById('classInText').textContent = profile.class;
+    document.getElementById('info-name').textContent = profile.name;
+    document.getElementById('info-class').textContent = profile.class;
+    document.getElementById('info-dob').textContent = profile.dob;
+    document.getElementById('info-hobbies').textContent = profile.hobbies;
+    document.getElementById('info-email').textContent = profile.email;
+    document.getElementById('info-phone').textContent = profile.phone;
+    if(profile.avatar) document.querySelector('.avatar img').src = profile.avatar;
+    if(profile.background) document.documentElement.style.setProperty('--bg-image', `url('${profile.background}')`);
   </script>
 </body>
-
 </html>
-
-
-
-
-

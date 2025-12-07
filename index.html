@@ -34,6 +34,22 @@
     @media (max-width:720px){.container{grid-template-columns:1fr;gap:12px}.profile{flex-direction:row;align-items:center;text-align:left}.avatar{width:96px;height:96px}.info{padding-left:6px}}
     /* small note */
     .note{font-size:13px;opacity:0.85;margin-top:8px;text-align:center}
+	  .back-home{
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+
+  padding:10px 16px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 8px;
+  font-size: 16px;
+  backdrop-filter: blur(4px);
+}
+
   </style>
 </head>
 <body>
@@ -109,25 +125,14 @@
     if(profile.avatar) document.querySelector('.avatar img').src = profile.avatar;
     if(profile.background) document.documentElement.style.setProperty('--bg-image', `url('${profile.background}')`);
   </script>
-    </main>
-  </div>
-  <a href="https://nt4620567-byte.github.io/Nhom4-12van/" style="
-    display:inline-block;
-    padding:10px 16px;
-    text-decoration:none;
-    border:1px solid #ccc;
-    border-radius:6px;
-    font-size:16px;
-    background:rgba(255,255,255,0.2);
-    backdrop-filter:blur(4px);
-    color:white;
-    margin-top:20px;
-  ">
-    ← Quay lại trang chủ
-  </a>
+    
+  <a href="https://nt4620567-byte.github.io/Nhom4-12van/" class="back-home">
+  ← Quay lại trang chủ
+</a>
 
 </body>
 </html>
+
 
 
 
